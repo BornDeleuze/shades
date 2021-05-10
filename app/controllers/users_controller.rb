@@ -8,14 +8,15 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
 
         if @user.save
-            redirect_to action: 'index'
+            session[:user_id] = @user.id
+            redirect_to @user
         else
-            redirect_to action: 'new'
+            render :new
         end
 
     end
 
-    def index
+    def show
 
     end
 
