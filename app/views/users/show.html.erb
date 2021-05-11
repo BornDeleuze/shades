@@ -2,9 +2,9 @@
 
 
 
-Hey <%=@user.name%>!!
+Hey <%=@user.username%>!!
 
-Here are your books!
+Here are the books you own!!
 <ul>
 <% @user.user_books.each do |book| %>
     <%#binding.pry%>

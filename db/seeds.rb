@@ -3,14 +3,14 @@ User.destroy_all
 Book.destroy_all
 
 
-User.create(name: "kaia",
+User.create(username: "kaia",
         email: "kaia@kaia.com",
         password: "kaia"
         )
 
 
 10.times do
-    User.create(name: Faker::Games::Pokemon.name,
+    User.create(username: Faker::Games::Pokemon.name,
         email: Faker::Internet.email(domain: 'example'),
         password: ENV['SECRETPASSWORD']
     )

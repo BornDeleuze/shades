@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+ p, li {
+    font-family: 'Quicksand', sans-serif;
+}
+a {
+    color: black;
+}
+ .error {
+     color: darkred
+ }
+
+ .field_with_errors {
+    border-style: solid;
+    border-width: 4px;
+    border-color: darkred;
+ }

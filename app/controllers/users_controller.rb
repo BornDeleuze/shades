@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
 
-
     before_action :find_user, only: [:show, :edit, :update, :destroy]
-
+    
+    
+    def home
+        render '/home'
+    end
     def show
     end
     
@@ -45,7 +48,7 @@ class UsersController < ApplicationController
     end
     
     def user_params
-        params.require(:user).permit(:password, :email, :name)
+        params.require(:user).permit(:password, :email, :username)
     end
 
 end

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  get '/', to: 'users#home'
   get 'signup', to: 'users#new'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
@@ -11,4 +11,7 @@ resources :user_books
   resources :users do
     resources :user_books
   end
+
+
+  get '/:anything', to: 'application#wrong_page'
 end
