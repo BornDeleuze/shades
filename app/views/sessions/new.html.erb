@@ -7,7 +7,7 @@ hello worlds
     <% end %>
 <% end %>
 
-<%= form_with url: '/login' do |f| %>
+<%= form_with url: '/login', local: true do |f| %>
     <%= f.label :email %>
     <%= f.text_field :email %><br><br>
     

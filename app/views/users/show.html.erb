@@ -3,3 +3,13 @@
 
 
 Hey <%=@user.name%>!!
+
+Here are your books!
+<ul>
+<% @user.user_books.each do |book| %>
+    <%#binding.pry%>
+    <li>
+        <%= link_to book.book.title, book%> by <%= book.book.author %>
+    </li>
+<%end%>
+</ul>
