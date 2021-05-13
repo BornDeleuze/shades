@@ -1,0 +1,11 @@
+<%= form_with model: @user_book, local: true do |f| %>
+    <%= f.label :username%>
+    <%= f.text_field :username, required:true, class: @user.errors.any? ? "error-field" : nil  %>
+    <br>
+    <%= f.label :email%>
+    <%= f.email_field :email, required:true, class: @user.errors.any? ? "error-field" : nil  %>
+    <br>
+    <%= f.label :password%>
+    <%= f.password_field :password, required:true, class: @user.errors.any? ? "error-field" : nil  %>
+    <%= f.submit %>
+<%end%>

@@ -1,11 +1,9 @@
-<h4>Hey <%=@user.username%>!!
-Here are the books you own!!
+<h4> Hey <%=@user.username%>!! Welcome back!
+
 </h4>
-<h4>To add a new book, <%= link_to "go here!", new_user_user_book_path %> </h4>
-<ul>
-<% @user.user_books.each do |book| %>
-    <li>
-        <%= link_to book.book.title, book%> by <%= book.book.author %>
-    </li>
-<%end%>
-</ul>
+<h4>To add a new book, <%= link_to "go here!", new_user_user_book_path(@user, @user_book) %>
+</h4>
+<h4>To view a list of your books <%= link_to "go here", user_user_books_path(@user, @user_book) %>
+</h4>
+<h4>To view a list of users go <%= link_to "go here", users_path%>
+</h4>

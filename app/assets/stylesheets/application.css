@@ -14,36 +14,3 @@
  *= require_self
  */
 
-
-p, li, h1, h2 ,h3, h4, h5, label {
-    font-family: 'Quicksand', sans-serif;
-    text-align: center;
-    color: wheat;
-    background-color: rgba(32, 33, 36, 1);
-}
-
-a {
-    color: wheat;
-}
-div.banner{ 
-    text-align: center;
-    font-size: 65px;
-    font-weight: 100;
-    color: goldenrod;
-    background-color: rgb(78, 24, 24);
-
-}
-small {
-    color: thistle;
-}
-.error {
-     color: darkred
- }
-.background{
-    background-color: rgba(32, 33, 36, 1);
-}
- .field_with_errors .error-field{
-    border-style: solid;
-    border-width: 3px;
-    border-color: darkred;
-}
