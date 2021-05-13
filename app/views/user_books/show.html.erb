@@ -1,7 +1,7 @@
-<h4>Hey <%=@user.username%>!!
-Here are the books you own!!
+<h4>Here's the details of your book.
 </h4>
-<h4>To add a new book, <%= link_to "go here!", new_user_user_book_path %> </h4>
+
+<ul>
 <ul>
 <% @user.user_books.each do |book| %>
     <li>
