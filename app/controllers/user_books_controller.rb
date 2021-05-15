@@ -16,19 +16,35 @@ class UserBooksController < ApplicationController
     end
     
     def new
-        if logged_in
+        if logged_in? && authorized?
             @user_book = UserBook.new()
         else
+            binding.pry
             redirect_to login_path
+        end
     end
 
     def create    
+        binding.pry
+        if params[:user_id]
+            current_user
+            @user_book = @user.user_books.build(book_params)
+        else
+            redirect_to login_path
+        end
+
+        if @user_book.save
+            redirect_to user_user_books_path(@user, @userbook)
+        else
+            render :new
+        end
     end
 
     def edit
-        if logged_in
+        if logged_in? && authorized?
         else
             redirect_to login_path
+        end
     end
 
     def update
@@ -36,6 +52,10 @@ class UserBooksController < ApplicationController
     end
 
     private
+        def book_params
+            params.require(:user_book).permit(:user_book_title, :user_book_author, :user_book_genre, :user_book_condition)
+            
+        end
         def set_book
             @user_book = UserBook.find_by_id(params[:id])
         end

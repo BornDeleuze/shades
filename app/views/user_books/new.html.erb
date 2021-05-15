@@ -1,0 +1,4 @@
+<h2>Save a new book!</h2>
+<%= render 'form' %>
+<h4> Back to <%=link_to "list of owned books", user_books_path %> </h4>
+<h4> Look at <%=link_to "your books", user_user_books_path(@user, @user_books) %> </h4>
