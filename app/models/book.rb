@@ -5,6 +5,5 @@ class Book < ApplicationRecord
     validates :title, presence: true
 
     validates :author, presence: true
-    scope :rare, -> { where(rare: true)}
-   
+    scope :rare, -> { where(rare: true)}   
 end

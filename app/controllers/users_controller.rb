@@ -8,6 +8,9 @@ class UsersController < ApplicationController
     end
     
     def show
+        @rare_books = Book.rare
+        end
+
         if logged_in?
         else
             redirect_to login_path

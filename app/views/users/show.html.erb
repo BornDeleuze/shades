@@ -1,9 +1,9 @@
 <h4> Hey <%=@user.username%>!! Welcome back!
 </h4>
-<h3>These are your rare books!</h3>
+<h3>These are the rare books we have!</h3>
 <ul>
-<%= Book.rare.each do |book|%>
-    <%= book.title%>
+<% @rare_books.each do |book|%>
+    <%= book.title%><br>
 <%end%>
 </ul>
 <h4>To add a new book, <%= link_to "go here", new_user_user_book_path(@user, @user_book) %>
