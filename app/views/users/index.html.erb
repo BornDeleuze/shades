@@ -1,5 +1,8 @@
 <h2>Here's a lit of users. Click on them to check out what books they have!
 </h2>
+<ul>
 <% @users.each do |user|%>
-    <%= link_to user.username, user %>
+    <li><%= link_to user.username, "/users/#{user.id}/user_books" %></li>
 <% end %>
+</ul>
+<%= link_to "home", "/"%>

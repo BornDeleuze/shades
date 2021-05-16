@@ -1,17 +1,21 @@
 
-
-<%= form_with model: [@user, @user_book], local: true do |f| %>
-    <%= f.label "Book title"%>
-    <%= f.text_field :user_book_title, required:true, class: @user.errors.any? ? "error-field" : nil  %>
-    <br>
-    <%= f.label "Author"%>
-    <%= f.text_field :user_book_author, required:true, class: @user.errors.any? ? "error-field" : nil  %>
-    <br>
-    <%= f.label "Genre"%>
-    <%= f.text_field :user_book_genre%>
-    <br>
+<%= form_for @user_book do |f| %>
     <%= f.label "Condition" %>
-    <%= f.text_field :user_book_condition %>
+    <%= f.text_field :condition %>
+    <br>
+    
+    
+    <%= f.fields_for :book do |ff|%>
+        <%= ff.label "Book title"%>
+        <%= ff.text_field :title, required:true, class: @user.errors.any? ? "error-field" : nil  %>
+        <br>
+        <%= ff.label "Author"%>
+        <%= ff.text_field :author, required:true, class: @user.errors.any? ? "error-field" : nil  %>
+        <br>
+        <%= ff.label "Genre"%>
+        <%= ff.text_field :genre%>
+        <br>    
+    <% end %>
 
     <%= f.submit %>
 <% end %>

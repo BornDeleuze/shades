@@ -1,13 +1,11 @@
 <h3>Here's the details of your book.
 </h3>
-
-
+<h4> Owner: <%= @user_book.user.username %> </h4>
 <h4> Title: <%= @user_book.book.title %><br>
 Author: <%= @user_book.book.author %><br>
 </h4>
 <h5>Genre: <%= @user_book.book.genre%><br>
 Condition: <%= @user_book.condition %>
 </h5>
-<h4> Save a <%=link_to "new book", new_user_user_books_path %></h4>
+<h4> Save a <%=link_to "new book", new_user_book_path %></h4>
 <h4> Back to <%=link_to "list of owned books", user_books_path %> </h4>
-<h4> Look at <%=link_to "your books", user_user_books_path %> </h4>

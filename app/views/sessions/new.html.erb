@@ -1,5 +1,6 @@
-
-<%binding.pry%>
+<h3>
+    Welcome to Shades. You can keep track of the books you have here.
+</h3>
 <% if @user.errors.any? %>
     <% @user.errors.full_messages.each do |error| %>
         <h4><%= error %></h4>
@@ -12,8 +13,8 @@
     
     <%= f.label :password %>
     <%= f.password_field :password, required:true, class: @user.errors.any? ? "error-field" : nil  %> <br><br>
-
-
-    
     <%= f.submit "Login" %>
+    <br>
+    <br>
+    <%= link_to "Log in with Google", '/auth/google_oauth2', method: :post %>
 <% end %>

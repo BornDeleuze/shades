@@ -1,16 +1,18 @@
 class UsersController < ApplicationController
 
-    before_action :find_user, :set_user_id, only: [:show, :edit, :update, :destroy]
+    before_action :find_user, :set_user_id, only: [:show, :edit, :update, :destroy, :index]
     
     def index
+        current_user
         @users = User.all
     end
-    def home
-        render '/home'
-    end
-    def show
-    end
     
+    def show
+        if logged_in?
+        else
+            redirect_to login_path
+        end
+    end
 
     def new
         @user = User.new
@@ -27,8 +29,6 @@ class UsersController < ApplicationController
         end
     end
 
-
-
     def edit
     end
 
@@ -40,9 +40,6 @@ class UsersController < ApplicationController
         end
     end
 
-
-
-
     private
 
     def find_user
@@ -51,8 +48,10 @@ class UsersController < ApplicationController
     def user_params
         params.require(:user).permit(:password, :email, :username)
     end
-    def set_user_id
-        @user_id= @user.id
-    end
+    # def set_user_id
+    #     if @user
+    #         @user_id= @user.id
+    #     end
+    # end
 
 end

@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  get '/', to: 'users#home'
+  get '/', to: 'users#show'
   get 'signup', to: 'users#new'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
-  delete 'logout', to: 'sessions#destroy'
+  get 'logout', to: 'sessions#destroy'
 
-resources :user_books
-  # resources :users, only: [:show, :new, :create, :edit, :update, :destroy]
+
+  match '/auth/:google_oauth2/callback' => 'sessions#google', via: [:get, :post]
+
+  resources :user_books
+
   resources :users do
     resources :user_books
   end
