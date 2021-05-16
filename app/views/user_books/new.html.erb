@@ -1,4 +1,11 @@
 <h2>Save a new book!</h2>
+
+<% if @user_book.errors.any? %>
+    <% @user_book.errors.full_messages.each do |error| %>
+        <h4 class= "error"><%= error %></h4>
+    <% end %>
+<% end %>
+
 <%= render 'form' %>
 <h4> Back to <%=link_to "list of owned books", user_books_path %> </h4>
 <h4> Look at <%=link_to "your books", user_user_books_path(@user, @user_books) %> </h4>

@@ -20,7 +20,7 @@ Your application must provide standard user authentication, including signup, lo
 6)  [X]
 Your authentication system must also allow login from some other service. Facebook, Twitter, Foursquare, Github, etc...
 
-7)  [ ]
+7)  [X]
 You must include and make use of a nested resource with the appropriate RESTful URLs.
 
     • You must include a nested new route with form that relates to the parent resource
@@ -34,7 +34,7 @@ Your forms should correctly display validation errors.
 
     b. Error messages describing the validation failures must be present within the view.
 
-9)  [ ]
+9)  [X]
 Your application must be, within reason, a DRY (Do-Not-Repeat-Yourself) rails app.
 
     • Logic present in your controllers should be encapsulated as methods in your models.

@@ -7,5 +7,9 @@ Author: <%= @user_book.book.author %><br>
 <h5>Genre: <%= @user_book.book.genre%><br>
 Condition: <%= @user_book.condition %>
 </h5>
+<% if current_user == @user_book.user %>
+    <h5>Edit this book <%= link_to "here",  edit_user_user_book_path(@user, @user_book) %></h5>
+<% end %>
 <h4> Save a <%=link_to "new book", new_user_book_path %></h4>
 <h4> Back to <%=link_to "list of owned books", user_books_path %> </h4>
+<h4> Look at <%=link_to "your books", user_user_books_path(@user) %> </h4>

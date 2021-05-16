@@ -1,0 +1,6 @@
+<h3>Editing <%=@user_book.book.title %></h3>
+
+
+<%= render 'form' %>
+
+<%= link_to "Delete this book from your library",  @user_book,  method: :delete, data: { confirm: 'Are you sure?' }%>

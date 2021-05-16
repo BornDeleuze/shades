@@ -35,6 +35,8 @@ User.all.each do |user|
         )
         book.save
     end
+    user.user_books.last.book.rare=true
+    user.user_books.last.book.save
 end
 
 puts "good to go"

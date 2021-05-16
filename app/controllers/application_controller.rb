@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
         render "/wrong_page"
     end
 
-    helper_method :logged_in?, :current_user, :authorized
+    helper_method :logged_in?, :current_user, :authorized, :set_user_id
 
 
     def current_user
@@ -12,8 +12,7 @@ class ApplicationController < ActionController::Base
     end
 
     def authorized?
-        @user.errors.add(:authorized, "you must sign in as the corresponding user to modify that")
-        render login_path unless logged_in? && @user == current_user
+        logged_in? && @user == current_user
     end
 
     def logged_in?

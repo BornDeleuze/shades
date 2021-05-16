@@ -2,7 +2,9 @@ class Book < ApplicationRecord
     has_many :user_books
     has_many :users, through: :user_books
     
-    validates :title, presence: true, uniqueness: true
+    validates :title, presence: true
 
     validates :author, presence: true
+    scope :rare, -> { where(rare: true)}
+   
 end
