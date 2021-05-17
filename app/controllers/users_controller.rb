@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     
     def show
         @rare_books = Book.rare
-        end
 
         if logged_in?
         else
@@ -51,10 +50,5 @@ class UsersController < ApplicationController
     def user_params
         params.require(:user).permit(:password, :email, :username)
     end
-    # def set_user_id
-    #     if @user
-    #         @user_id= @user.id
-    #     end
-    # end
 
 end

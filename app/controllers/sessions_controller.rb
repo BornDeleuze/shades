@@ -1,17 +1,29 @@
 class SessionsController < ApplicationController
     
     def new
+        if current_user
+            redirect_to user_path(current_user)
+        else
         @user = User.new
+        end
     end
     def create
-        @user = User.find_by(email: params[:email])
+        if User.find_by(email: params[:email])
+            @user = User.find_by(email: params[:email])
             session[:current_user_id] = @user.id
             if  @user && @user.authenticate(params[:password])
                 session[:user_id] = @user.id
                 redirect_to user_path(@user)
             else
-                redirect_to login_path
+                @user.errors.add(:password, "does not match for user") 
+                render :new
             end 
+        else
+            @user = User.new
+            @user.errors.add(:email, "does not match a user") 
+            render :new
+        end
+
     end
 
     def index

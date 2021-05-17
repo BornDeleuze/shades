@@ -1,7 +1,6 @@
 class UserBooksController < ApplicationController
    
     before_action :set_book, only: [:show, :edit, :update, :destroy]
-
     def index
         current_user
         if params[:user_id]
@@ -26,27 +25,44 @@ class UserBooksController < ApplicationController
     end
 
     def create
-        if logged_in?
-                current_user
-                if book = Book.find_by(author: params[:user_book][:book][:author],
-                    title: params[:user_book][:book][:title],
-                    genre: params[:user_book][:book][:genre])
-                    @user_book = UserBook.new(condition: params[:user_book][:condition])
-                    @user_book.user= current_user
-                else
-                    book = Book.new(author: params[:user_book][:book][:author],
-                    title: params[:user_book][:book][:title],
-                    genre: params[:user_book][:book][:genre])
-                    @user_book = UserBook.new(condition: params[:user_book][:condition])
-                    @user_book.user= current_user
-                end
-                if book.save && @user_book.book = book && @user_book.save
-                    redirect_to user_user_books_path(@user, @userbook)
-                else
-                    render :new
-                end
+        @user_book = UserBook.new()
+        @user_book.book = Book.new()
+        if Book.new(book_params).valid?
+            if logged_in?
+                    current_user
+                    if book = Book.find_by(author: params[:user_book][:book][:author],
+                        title: params[:user_book][:book][:title],
+                        genre: params[:user_book][:book][:genre],
+                        year: params[:user_book][:book][:year],
+                        publisher: params[:user_book][:book][:publisher])
+                        @user_book = UserBook.new(condition: params[:user_book][:condition])
+                        @user_book.user= current_user
+                    else
+                        book = Book.new(author: params[:user_book][:book][:author],
+                        title: params[:user_book][:book][:title],
+                        genre: params[:user_book][:book][:genre],
+                        year: params[:user_book][:book][:year],
+                        publisher: params[:user_book][:book][:publisher],
+                        rare: params[:user_book][:book][:rare])
+                        @user_book = UserBook.new(condition: params[:user_book][:condition])
+                        @user_book.user= current_user
+                    end
+                    if book.save 
+                        @user_book.book = book
+                        if @user_book.save
+                            redirect_to user_user_books_path(@user, @userbook)
+                            else
+                                render :new
+                        end
+                    else
+                        render :new
+                    end
+            else
+                redirect_to login_path     
+            end
         else
-            redirect_to login_path     
+            @user_book.errors.add(:author_and_title, "must be valid") 
+            render :new
         end
     end
 
@@ -60,6 +76,9 @@ class UserBooksController < ApplicationController
             @user_book.book.title = params[:user_book][:book][:title]
             @user_book.book.author = params[:user_book][:book][:author]
             @user_book.book.genre = params[:user_book][:book][:genre]
+            @user_book.book.year = params[:user_book][:book][:year]
+            @user_book.book.publisher = params[:user_book][:book][:publisher]
+            @user_book.book.rare = params[:user_book][:book][:rare]
             if  @user_book.save
                 redirect_to user_user_books_path(@user, @userbook)
             else
@@ -79,7 +98,10 @@ class UserBooksController < ApplicationController
 
     private
         def book_params
-            params.require(:user_book).permit(:title, :author, :genre, :condition)
+            params.require(:user_book).permit(:title, :author, :genre, :year, :publisher, :rare)
+        end
+        def user_book_params
+            params.require(:user_book).permit(:condition)
         end
         def set_book
             @user_book = UserBook.find_by_id(params[:id])

@@ -1,6 +1,6 @@
 
 <%= form_for @user_book do |f| %>
-    <%= f.fields_for :book do |ff|%>
+    <p><%= f.fields_for :book do |ff|%>
         <%= ff.label "Book title"%>
         <%= ff.text_field :title, required:true, value: @user_book.book.title, class: @user_book.errors.any? ? "error-field" : nil  %>
         <br>
@@ -9,10 +9,19 @@
         <br>
         <%= ff.label "Genre"%>
         <%= ff.text_field :genre, value: @user_book.book.genre%>
+        <br>
+        <%= ff.label "Publisher"%>
+        <%= ff.text_field :publisher, value: @user_book.book.publisher%>
         <br>    
+        <%= ff.label "Year Published"%>
+        <%= ff.text_field :year, value: @user_book.book.year%>
+        <br>
+        Is this a rare book?<%= ff.radio_button :rare, true %> Y <%= ff.radio_button :heat, false %> N
+        <br>
     <% end %>
     <%= f.label "Condition" %>
     <%= f.text_field :condition %>
-
+    <br>
     <%= f.submit %>
+    </p>
 <% end %>
