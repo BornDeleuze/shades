@@ -27,7 +27,8 @@ class UserBooksController < ApplicationController
     def create
         @user_book = UserBook.new()
         @user_book.book = Book.new()
-        if Book.new(book_params).valid?
+        if Book.new(author: params[:user_book][:book][:author],
+            title: params[:user_book][:book][:title]).valid?
             if logged_in?
                     current_user
                     if book = Book.find_by(author: params[:user_book][:book][:author],
@@ -97,11 +98,8 @@ class UserBooksController < ApplicationController
     end
 
     private
-        def book_params
-            params.require(:user_book).permit(:title, :author, :genre, :year, :publisher, :rare)
-        end
         def user_book_params
-            params.require(:user_book).permit(:condition)
+            params.require(:user_book).permit(:title, :author, :genre, :year, :publisher, :rare, :condition)
         end
         def set_book
             @user_book = UserBook.find_by_id(params[:id])
