@@ -10,7 +10,6 @@ class SessionsController < ApplicationController
     def create
         if User.find_by(email: params[:email])
             @user = User.find_by(email: params[:email])
-            session[:current_user_id] = @user.id
             if  @user && @user.authenticate(params[:password])
                 session[:user_id] = @user.id
                 redirect_to user_path(@user)
@@ -43,9 +42,11 @@ class SessionsController < ApplicationController
             user.password = SecureRandom.hex(13)
         end
         if @user && @user.id
+            binding.pry
+            session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
-            redirect_to login_path
+            render :new
         end
     end
 
