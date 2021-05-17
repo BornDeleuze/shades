@@ -1,5 +1,5 @@
 
-<%= form_for @user_book do |f| %>
+<%= form_with model: @user_book do |f| %>
     <p><%= f.fields_for :book do |ff|%>
         <%= ff.label "Book title"%>
         <%= ff.text_field :title, required:true, value: @user_book.book.title, class: @user_book.errors.any? ? "error-field" : nil  %>
