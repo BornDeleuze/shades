@@ -14,12 +14,9 @@ class SessionsController < ApplicationController
                 session[:user_id] = @user.id
                 redirect_to user_path(@user)
             else
-                @user.errors.add(:password, "does not match for user") 
-                render :new
+                redirect_to '/login', notice: "Email/Password not found"
             end 
         else
-            # @user = User.new
-            # @user.errors.add(:email, "does not match a user") 
             redirect_to '/login', notice: "Email/Password not found"
         end
 

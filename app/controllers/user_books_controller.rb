@@ -17,8 +17,14 @@ class UserBooksController < ApplicationController
     
     def new
         if logged_in?
-            @user_book = UserBook.new()
-            @user_book.book = Book.new()
+            if params[:format]
+                @user_book = UserBook.find_by_id(params[:format])
+                @user_book.condition = nil
+                flash.notice = "Please enter the condition of your book!"
+            else
+                @user_book = UserBook.new()
+                @user_book.book = Book.new()
+            end
         else
             redirect_to login_path
         end

@@ -40,6 +40,12 @@ div.alert-info {
     color: wheat;
     background-color: rgb(247, 1, 1)
 }
+div.notice-info {
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    color: rgb(41, 182, 53);
+
+}
 
 .error {
      color: darkred

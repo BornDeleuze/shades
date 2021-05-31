@@ -17,11 +17,19 @@
         <%= ff.text_field :year, value: @user_book.book.year%>
         <br>
         Is this a rare book?<%= ff.radio_button :rare, true %> Y <%= ff.radio_button :heat, false %> N
-        <br>
+    </p>
     <% end %>
-    <%= f.label "Condition" %>
-    <%= f.text_field :condition %>
-    <br>
-    <%= f.submit %>
+
+    <% flash.each do |type, msg| %>
+      <div class="notice-info">
+        <%= msg %> <br>
+      </div>
+    <% end %>
+
+    <p>
+        <%= f.label "Condition" %>
+        <%= f.text_field :condition %>
+        <br>
+        <%= f.submit %>
     </p>
 <% end %>
