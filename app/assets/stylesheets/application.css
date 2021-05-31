@@ -18,7 +18,7 @@
     font-family: 'Quicksand', sans-serif;
     text-align: center;
     color: wheat;
-    background-color: rgba(32, 33, 36, 1);
+    background-color: rgb(64, 64, 68);
 }
 
 a {
@@ -29,7 +29,7 @@ div.banner{
     font-size: 30px;
     font-weight: 100;
     color: goldenrod;
-    background-color: rgb(78, 24, 24);
+    background-color: rgb(63, 14, 14);
 
 }
 small {
@@ -51,7 +51,7 @@ div.notice-info {
      color: darkred
  }
 .background{
-    background-color: rgba(32, 33, 36, 1);
+    background-color: rgb(64, 64, 68);
 }
  .error-field{
     border-style: solid;

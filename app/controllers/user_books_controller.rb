@@ -3,8 +3,10 @@ class UserBooksController < ApplicationController
     before_action :set_book, only: [:show, :edit, :update, :destroy]
     def index
         current_user
+    binding.pry
         if params[:user_id]
-            @user_books = @user.user_books
+            friend = User.find_by_id(params[:user_id])
+            @user_books = friend.user_books
         else
             @user_books = UserBook.all
         end
