@@ -35,6 +35,12 @@ div.banner{
 small {
     color:thistle
 }
+div.alert-info {
+    font-family: 'Quicksand', sans-serif;
+    color: wheat;
+    background-color: rgb(247, 1, 1)
+}
+
 .error {
      color: darkred
  }
@@ -46,3 +52,4 @@ small {
     border-width: 9px;
     border-color: darkred;
 }
+
