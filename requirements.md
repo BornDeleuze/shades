@@ -27,7 +27,7 @@ You must include and make use of a nested resource with the appropriate RESTful 
 
     • You must include a nested index or show route
 
-8)  [ ]
+8)  [X]
 Your forms should correctly display validation errors.
 
     a. Your fields should be enclosed within a fieldswitherrors class
