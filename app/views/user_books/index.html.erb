@@ -1,5 +1,11 @@
 
 
+<%= form_tag("/user_books", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
     <h4>Here is that library:</h4>
     <ul>
     <% @user_books.each do |book|%>

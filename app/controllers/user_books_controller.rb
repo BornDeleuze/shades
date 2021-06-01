@@ -9,6 +9,10 @@ class UserBooksController < ApplicationController
         else
             @user_books = UserBook.all
         end
+
+        if params[:q]
+            @user_books = @user_books.search(params[:q])
+        end
     end
 
     def show
